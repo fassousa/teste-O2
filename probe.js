@@ -5,6 +5,25 @@ class Probe {
     this.direction = direction;
   }
 
+  // Receives a string of commands and moves the probe according to them
+  move(commands) {
+    for (const command of commands) {
+      switch (command) {
+        case 'L':
+          this.turnLeft();
+          break;
+        case 'R':
+          this.turnRight();
+          break;
+        case 'M':
+          this.moveForward();
+          break;
+        default:
+          throw new Error(`Invalid command: ${command}`);
+      }
+    }
+  }
+
   // Turns the probe 90 degrees to the left
   turnLeft() {
     switch (this.direction) {
@@ -59,3 +78,5 @@ class Probe {
     }
   }
 }
+
+module.exports = Probe;
